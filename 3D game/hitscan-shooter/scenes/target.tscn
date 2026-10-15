@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d3pmcrobonnpy"]
+
+[ext_resource type="Script" uid="uid://200bg7khrtml" path="res://scripts/target.gd" id="1_b37e2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhb7k"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhb7k"]
+size = Vector3(2, 2, 2)
+
+[node name="Target" type="StaticBody3D" unique_id=1885568064]
+script = ExtResource("1_b37e2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1004046333]
+mesh = SubResource("BoxMesh_qhb7k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=363675528]
+shape = SubResource("BoxShape3D_qhb7k")

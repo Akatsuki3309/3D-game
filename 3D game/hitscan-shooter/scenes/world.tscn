@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ds1l0iyu05ab2"]
+
+[ext_resource type="PackedScene" uid="uid://drpcbghday3et" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://d3pmcrobonnpy" path="res://scenes/target.tscn" id="2_rwgxs"]
+[ext_resource type="Script" uid="uid://ciu6vprg541yi" path="res://scripts/wave_manager.gd" id="3_wavemgr"]
+
+[sub_resource type="Environment" id="Environment_qhb7k"]
+
+[node name="World" type="Node3D" unique_id=46708866]
+
+[node name="Player" parent="." unique_id=112970449 instance=ExtResource("1_nnsk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1680740412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(1500, 1, 1500)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1785116543]
+transform = Transform3D(1, 0, 0, 0, 0.6103075, 0.79216474, 0, -0.79216474, 0.6103075, 0, 189.18509, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=358911975]
+environment = SubResource("Environment_qhb7k")
+
+[node name="Target1" parent="." unique_id=1885568064 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 1, -5.648)
+visible = false
+
+[node name="Target2" parent="." unique_id=711971489 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 1, -5.648)
+visible = false
+
+[node name="Target3" parent="." unique_id=873574116 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 1, -5.648)
+visible = false
+
+[node name="Target4" parent="." unique_id=1952820819 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -550, 1, -5.648)
+visible = false
+
+[node name="WaveManager" type="Node" parent="." unique_id=396750595]
+script = ExtResource("3_wavemgr")

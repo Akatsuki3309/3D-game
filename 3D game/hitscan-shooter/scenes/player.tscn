@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://drpcbghday3et"]
+
+[ext_resource type="Script" uid="uid://bhvwhqv1dmfgk" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://ul2tjcjulnol" path="res://scripts/weapon.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://pwod314v4jdj" path="res://scenes/impact.tscn" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://bqdqcm04fohtj" path="res://scripts/crosshair.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://yc7xus33xt5t" path="res://scripts/health_bar.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://mg2pxlldmn8o" path="res://scripts/ammo_hud.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://bc15icwne55vc" path="res://scripts/viewmodel.gd" id="7_viewmdl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhb7k"]
+
+[node name="Player" type="CharacterBody3D" unique_id=112970449]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1088467824]
+shape = SubResource("CapsuleShape3D_qhb7k")
+
+[node name="Head" type="Node3D" parent="." unique_id=1807931051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1296411819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+far = 1000.0
+script = ExtResource("2_g2els")
+impact_scene = ExtResource("3_qhqgy")
+
+[node name="Viewmodel" type="Node3D" parent="Head/Camera3D" unique_id=2045118377]
+script = ExtResource("7_viewmdl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=473017741]
+
+[node name="Crosshair" type="Control" parent="CanvasLayer" unique_id=472880870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_dqkch")
+color = Color(0.6666667, 0.6666667, 0, 1)
+
+[node name="HealthBar" type="Control" parent="CanvasLayer" unique_id=971438334]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_qlg0r")
+
+[node name="AmmoHud" type="Control" parent="CanvasLayer" unique_id=1523505830]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_tuyoq")
